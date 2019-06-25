@@ -2,12 +2,12 @@ package br.com.polizello.tarefas.controller;
 
 import javax.servlet.http.HttpSession;
 
+
+import br.com.polizello.dao.JdbcUsuarioDao;
+import br.com.polizello.modelo.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import br.com.caelum.dao.JdbcUsuarioDao;
-import br.com.caelum.modelo.Usuario;
 
 @Controller
 public class LoginController {

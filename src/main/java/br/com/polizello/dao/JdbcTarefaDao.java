@@ -13,7 +13,7 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import br.com.caelum.modelo.Tarefa;
+import br.com.polizello.modelo.Tarefa;
 
 @Repository
 public class JdbcTarefaDao{
@@ -29,7 +29,7 @@ public class JdbcTarefaDao{
 		}
 	}
 	
-	public Connection getConnection(){
+	private Connection getConnection(){
 		return connection;
 	}
 	
@@ -55,7 +55,7 @@ public class JdbcTarefaDao{
 	
 	public List<Tarefa> getLista(){
 		try{
-			List<Tarefa> tarefas = new ArrayList<Tarefa>();
+			List<Tarefa> tarefas = new ArrayList<>();
 			PreparedStatement stmt = getConnection().prepareStatement("select * from tarefas order by descricao");
 			ResultSet rs = stmt.executeQuery();
 			
@@ -63,7 +63,7 @@ public class JdbcTarefaDao{
 				Tarefa tarefa = new Tarefa();
 				tarefa.setId(rs.getLong("id"));
 				tarefa.setDescricao(rs.getString("descricao"));
-				tarefa.setFinalizado(rs.getInt("finalizado") == 1 ? true : false);
+				tarefa.setFinalizado(rs.getInt("finalizado") == 1);
 				tarefa.setDataFinalizacao(rs.getDate("dataFinalizacao"));
 				
 				tarefas.add(tarefa);
@@ -88,7 +88,7 @@ public class JdbcTarefaDao{
 			while(rs.next()){
 				tarefa.setId(rs.getLong("id"));
 				tarefa.setDescricao(rs.getString("descricao"));
-				tarefa.setFinalizado(rs.getInt("finalizado") == 1 ? true : false);
+				tarefa.setFinalizado(rs.getInt("finalizado") == 1);
 				tarefa.setDataFinalizacao(rs.getDate("dataFinalizacao"));
 			}
 			

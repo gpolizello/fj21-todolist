@@ -10,8 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import br.com.caelum.dao.JdbcTarefaDao;
-import br.com.caelum.modelo.Tarefa;
+import br.com.polizello.dao.JdbcTarefaDao;
+import br.com.polizello.modelo.Tarefa;
 
 @Controller
 public class TarefasController {
